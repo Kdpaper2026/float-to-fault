@@ -1,0 +1,7 @@
+numpy>=2.0
+numba>=0.60
+openpyxl>=3.1
+scipy>=1.13
+matplotlib>=3.9
+# Node (manuscript build only): docx@9.7.1   ->  npm install -g docx@9.7.1
+# LaTeX with pdflatex and pdftoppm (poppler) is needed only for make_eqs.py

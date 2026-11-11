@@ -1,0 +1,44 @@
+instances 400; with delay in both worlds 400; delay only with litigation 0
+
+== Attribution (truth, primary config) ==
+mean delay days 8-event world 28.1, 9-event world 31.0 (litigation adds 3.0 days on average, pooled)
+instances where litigation adds delay (D9 > D8): 129 of 400 (32.2%)
+litigation Shapley share of attributed delay, pooled (ratio of sums): 0.223 [0.204, 0.244]
+litigation Shapley share, per instance mean: 0.244 [0.225, 0.263]
+pooled share by party, 8-event world: employer 0.309, authority 0.345, contractor 0.206, neutral 0.140, court 0.000
+pooled share by party, 9-event world: employer 0.215, authority 0.278, contractor 0.165, neutral 0.119, court 0.223
+leading party counts 8-event: {'employer': 161, 'authority': 120, 'contractor': 80, 'neutral': 39, 'court': 0} | 9-event: {'employer': 101, 'authority': 115, 'contractor': 52, 'neutral': 31, 'court': 101}
+leading party differs between worlds: 28.2%
+
+== HL1: litigation missing from the record (regime lo) and other regimes, 9-event world ==
+regime lo: leading party changed in 28.2% of 400 instances; where litigation carries >= 5% of delay: 32.7% of 343
+regime c: leading party changed in 21.0% of 400 instances; where litigation carries >= 5% of delay: 23.0% of 343
+regime d: leading party changed in 51.0% of 396 instances; where litigation carries >= 5% of delay: 54.0% of 339
+(reference, 8-event world, regimes c and d pooled: 30.6%)
+
+== Mitigation: capture of oracle recovery (mean of per-instance ratios over instances with recoverable delay, as in the protocol) ==
+8-event regime a (n=223): P1 0.586 [0.524, 0.646]  P2 0.869 [0.827, 0.907]  P2e 0.999 [0.998, 1.000]  P3 0.959 [0.932, 0.981]  P4 1.000 [1.000, 1.000]  
+8-event regime c (n=223): P1 0.514 [0.450, 0.578]  P2 0.774 [0.724, 0.825]  P2e 0.861 [0.815, 0.902]  P3 0.820 [0.770, 0.865]  P4 0.840 [0.795, 0.884]  
+8-event regime d (n=217): P1 0.329 [0.270, 0.389]  P2 0.430 [0.368, 0.491]  P2e 0.442 [0.376, 0.505]  P3 0.404 [0.339, 0.466]  P4 0.404 [0.342, 0.468]  
+9-event regime a (n=213): P1 0.571 [0.507, 0.634]  P2 0.864 [0.819, 0.905]  P2e 0.981 [0.962, 0.995]  P3 0.973 [0.949, 0.991]  P4 1.000 [1.000, 1.000]  
+9-event regime lo (n=213): P1 0.571 [0.506, 0.636]  P2 0.882 [0.842, 0.923]  P2e 0.991 [0.977, 1.000]  P3 0.968 [0.943, 0.989]  P4 1.000 [0.999, 1.000]  
+9-event regime c (n=213): P1 0.523 [0.460, 0.584]  P2 0.743 [0.686, 0.800]  P2e 0.862 [0.818, 0.907]  P3 0.814 [0.765, 0.862]  P4 0.829 [0.779, 0.876]  
+9-event regime d (n=211): P1 0.377 [0.319, 0.438]  P2 0.449 [0.385, 0.515]  P2e 0.487 [0.425, 0.552]  P3 0.409 [0.345, 0.476]  P4 0.421 [0.356, 0.484]  
+
+HL2 (9-event world, complete record, n=213): P2e capture 0.981 [0.962, 0.995] ; P2e minus P4 gap (days/oracle days) -0.019 [-0.038, -0.005]
+recoverable delay exists in 213 of 400 (9-event) vs 223 of 400 (8-event) instances
+litigation event in the oracle best set: 0.0% of 9-event instances with recoverable delay; chosen by P2e (complete record): 16.4%; by P4: 0.0%
+litigation window still open at the decision epoch in 23.2% of instances
+
+== Sensitivity configurations (n instances; litigation share of attributed delay; share of recoverable instances with litigation in oracle set; P2e capture, complete record) ==
+primary   n=400 lit share 0.223 [0.203, 0.244] | lit in oracle set 0.0% (n=213) | P2e capture 0.981 [0.962, 0.995]
+scale_lo  n=200 lit share 0.063 [0.053, 0.075] | lit in oracle set 0.0% (n=111) | P2e capture 0.982 [0.955, 1.000]
+scale_hi  n=200 lit share 0.492 [0.454, 0.528] | lit in oracle set 4.0% (n=99) | P2e capture 0.951 [0.904, 0.989]
+lead_lo   n=200 lit share 0.210 [0.182, 0.239] | lit in oracle set 6.2% (n=112) | P2e capture 0.982 [0.955, 1.000]
+lead_hi   n=200 lit share 0.210 [0.182, 0.239] | lit in oracle set 0.0% (n=105) | P2e capture 0.981 [0.952, 1.000]
+cost3     n=200 lit share 0.210 [0.182, 0.239] | lit in oracle set 0.0% (n=105) | P2e capture 1.000 [1.000, 1.000]
+
+HL3 (all 200 common instances): litigation in oracle best set with L_lit 0.10: 7 (3.5%), with L_lit 0.50: 0 (0.0%)
+
+leading party changed under omission (lo): 113 instances; true leader was court in 101 of them
+instances where the true leader is not the court: 299; leader changed under omission in 12

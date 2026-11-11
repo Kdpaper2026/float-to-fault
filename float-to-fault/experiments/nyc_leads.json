@@ -1,0 +1,14 @@
+{
+ "source": "NYC Open Data, DOB NOW: Build - Job Application Filings, resource w9ak-ipjd, SODA API aggregate queries via the web-fetch tool",
+ "retrieved": "2026-10-25",
+ "dataset_extent": {"filings": 974651, "first_filing": "2016-08-04", "last_filing": "2026-10-22", "with_approved_date": 829409},
+ "lead_definition": "calendar days from filing_date to approved_date among filings with an approved_date (pending filings are excluded, so long leads are under-represented)",
+ "queries": "count(*) where date_diff_d(approved_date,filing_date)<=K grouped by job_type, K in {7,30,90,180,365}; approved counts by job_type: count(approved_date) grouped by job_type. Consistency check: grouped counts sum to the ungrouped totals 518722 (<=7) and 683991 (<=30).",
+ "approved": {"Alteration": 697016, "New Building": 49311, "all": 829409},
+ "cum_counts": {
+   "Alteration":   {"7": 477082, "30": 605955, "90": 667268, "180": 684986, "365": 693066},
+   "New Building": {"7": 13400,  "30": 26918,  "90": 37035,  "180": 42677,  "365": 46910}
+ },
+ "status_counts_current": {"LOC Issued": 382555, "Approved": 326837, "Permit Entire": 193172, "Objections": 22246, "Filing Withdrawn": 14061, "LL 158-2017-Denied": 257},
+ "caveat": "approved_date is plan approval in a municipal system; it is a proxy for an authority response time, not a project-specific consent. Grant/denial probabilities are not identified by these aggregates."
+}

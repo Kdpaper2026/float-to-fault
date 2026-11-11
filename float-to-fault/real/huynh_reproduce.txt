@@ -1,0 +1,26 @@
+
+Table 14 (as-built: Ibbs et al. 2011) | planned finish with EX at actual (v0) = 71 | as-built finish = 80 | as-planned finish 70 | as-built finish by full actuals 80
+act  engine      published   match
+EX   0           0           yes
+FT   2           2           yes
+OF   2           2           yes
+ST   0           0           yes
+RF   1/6         1/6         yes
+WD   1/6         1/6         yes
+ME   23/6        23/6        yes
+EL   5/6         5/6         yes
+FC   0           0           yes
+sum engine 9  all match: True
+
+Table 15 (modified: OF 2 days early, RF and FC 1 day early) | planned finish with EX at actual (v0) = 71 | as-built finish = 79 | as-planned finish 70 | as-built finish by full actuals 79
+act  engine      published   match
+EX   0           0           yes
+FT   4           4           yes
+OF   0           0           yes
+ST   0           0           yes
+RF   0           0           yes
+WD   0           0           yes
+ME   4           4           yes
+EL   1           1           yes
+FC   -1          -1          yes
+sum engine 8  all match: True

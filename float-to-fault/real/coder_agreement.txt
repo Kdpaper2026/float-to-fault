@@ -1,0 +1,40 @@
+== A. 20 general causes: second coder vs authors (set-valued authors codes count as agreeing if the coder value is in the set)
+owner_class: agree 9/20 = 0.45; kappa 0.35; coder said unclear 7/20; among the 13 rows where the coder committed: agree 9/13 = 0.69
+event_type: agree 14/20 = 0.70; kappa 0.67; coder said unclear 5/20; among the 15 rows where the coder committed: agree 14/15 = 0.93
+
+row-level disagreements (coder vs authors):
+1 Late payments to the contractor by the owner | event coder=unclear authors=['labour', 'supply_delay']
+2 Frequent requests for design changes | owner coder=unclear authors=['employer']; event coder=unclear authors=['design_hold', 'rework']
+3 Inadequate, slow or late decision-making | owner coder=unclear authors=['employer']; event coder=unclear authors=['design_hold']
+4 Financial difficulties of the contractor | event coder=unclear authors=['labour', 'supply_delay']
+5 Poor or ineffective planning and scheduling | owner coder=baseline authors=['contractor']
+6 Changes in contract scope (change orders, omissions, ad | owner coder=unclear authors=['employer']
+13 Errors and discrepancies in design | owner coder=unclear authors=['employer']
+14 Delay in design review and approval | owner coder=unclear authors=['authority', 'employer']
+15 Schedule with unrealistic contract duration estimate | owner coder=baseline authors=['employer']
+16 Lack of funds for the project | owner coder=unclear authors=['employer']; event coder=unclear authors=['labour', 'supply_delay']
+17 Poor scheduling of subcontractors | owner coder=baseline authors=['contractor']; event coder=not_event authors=['productivity']
+19 Improper or deficient bidding criteria | owner coder=baseline authors=['employer']
+20 Inadequate (deficient, incomplete or outdated) design | owner coder=unclear authors=['employer']
+
+coder owner counts: {'employer': 1, 'unclear': 7, 'contractor': 6, 'baseline': 4, 'neutral': 1, 'authority': 1} 
+coder event counts: {'unclear': 5, 'not_event': 4, 'rework': 2, 'productivity': 2, 'labour': 1, 'supply_delay': 1, 'weather': 1, 'design_hold': 2, 'approval_wait': 2}
+owner agreement if the authors baseline/not_event rows count as baseline: 12 /20
+
+== B. 15 contract reasons: coder owner class vs the party the World Bank source attributes the reason to
+1 Weak procurement capacity | source: employer | coder: unclear | unclear
+2 Weak contract management capacity | source: employer | coder: unclear | unclear
+3 Poor quality of feasibility report | source: employer | coder: unclear | unclear
+4 Land acquisition and resettlement issues | source: employer | coder: employer | consistent
+5 Change in scope, and modification of services due  | source: employer | coder: unclear | unclear
+6 Delay in related works | source: employer | coder: unclear | unclear
+7 Inadequate baselining, poor planning, outdated sch | source: employer | coder: baseline | consistent
+8 Weak contract administration | source: contractor | coder: unclear | unclear
+9 Lack of resources (material, machine, manpower) | source: contractor | coder: contractor | consistent
+10 Liquidity issues | source: contractor | coder: unclear | unclear
+11 Delay in approval by other departments (environmen | source: external | coder: authority | consistent
+12 Force majeure, political | source: external | coder: neutral | consistent
+13 Force majeure event (for example Covid-19) | source: external | coder: neutral | consistent
+14 Delay in other works | source: external | coder: unclear | unclear
+15 Unforeseen geological issues | source: external | coder: neutral | consistent
+coder committed on 7 of 15; of those, consistent with the source party: 7

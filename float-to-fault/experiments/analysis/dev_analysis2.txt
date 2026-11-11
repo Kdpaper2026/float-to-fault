@@ -1,0 +1,123 @@
+
+########## dev_primary2.json  split=dev cfg=primary  instances=400
+
+== E1 attribution (400 instances with delay; 0 without delay) ==
+monotone in all masks: 400 of 400
+CPM zero-share (pooled; Shapley days in events CPM scores 0 / total delay): 0.639
+CPM claim ratio (pooled; days CPM claims / total delay): 0.622
+share of CPM-claimed days on events with zero effect: 0.028
+instances where CPM scores no event at all: 0.135
+D/M0 mean 0.184  median 0.159
+fix-first efficiency (retrospective, full information; delay removed by top-k / best k-set), mean [95% CI]
+  k=1 shapley  0.897 [0.868, 0.922]
+  k=1 butfor   1.000 [1.000, 1.000]
+  k=1 alone    0.775 [0.737, 0.812]
+  k=1 windows  0.765 [0.724, 0.803]
+  k=1 cpm      0.360 [0.315, 0.402]
+  k=2 shapley  0.956 [0.941, 0.969]
+  k=2 butfor   0.779 [0.749, 0.807]
+  k=2 alone    0.879 [0.855, 0.902]
+  k=2 windows  0.735 [0.700, 0.768]
+  k=2 cpm      0.393 [0.353, 0.430]
+  k=3 shapley  0.968 [0.960, 0.975]
+  k=3 butfor   0.697 [0.669, 0.726]
+  k=3 alone    0.941 [0.925, 0.955]
+  k=3 windows  0.737 [0.707, 0.765]
+  k=3 cpm      0.442 [0.407, 0.476]
+summed but-for / D: 0.554   summed alone / D: 2.015
+ledger: instances with a weather event 0.595; mean fixed-event reference share of total lateness (full-planned): 0.215
+ledger identity |sum Shapley - (full - fixed_ref)| max: 7.11e-14
+mean true Shapley share by party: {'employer': 0.395, 'authority': 0.199, 'contractor': 0.249, 'neutral': 0.158}
+
+== E3 attribution stability under evidence regimes (400 instances) ==
+regime b: n=392  events observed 5.5  phantoms 0.00  delay explained (D_obs/D) 0.820
+   error in owner+authority share (abs): 0.145 [0.126, 0.163]   leading party changes: 0.209 [0.168, 0.250]
+regime c: n=399  events observed 8.0  phantoms 0.74  delay explained (D_obs/D) 1.087
+   error in owner+authority share (abs): 0.099 [0.088, 0.113]   leading party changes: 0.201 [0.165, 0.238]
+regime d: n=390  events observed 5.1  phantoms 1.03  delay explained (D_obs/D) 0.972
+   error in owner+authority share (abs): 0.235 [0.213, 0.256]   leading party changes: 0.403 [0.354, 0.451]
+
+== E2 prospective mitigation (400 instances) ==
+
+-- primary configuration, evidence regime a (tau 0.5, L_auth 0.10, sigma 0.5, beta 0.5); instances with recoverable delay: 219 of 400
+  capture P1 frequency       0.554 [0.495, 0.612]   regret days 4.39 [3.34, 5.54]
+  capture P2 Shapley         0.862 [0.820, 0.903]   regret days 0.45 [0.30, 0.63]
+  capture P3 direct greedy   0.972 [0.949, 0.989]   regret days 0.19 [0.05, 0.36]
+  capture P4 exact (model)   1.000 [1.000, 1.000]   regret days 0.00 [0.00, 0.00]
+  capture P2b Shapley/cost         0.869 [0.825, 0.908]   regret days 0.55 [0.35, 0.77]   >=99% of oracle: 0.826
+  capture P2e epoch Shapley        0.995 [0.986, 1.000]   regret days 0.04 [0.00, 0.11]   >=99% of oracle: 0.995
+  capture P2eb epoch Shapley/cost  0.996 [0.990, 1.000]   regret days 0.02 [0.00, 0.05]   >=99% of oracle: 0.986
+  paired: P2e-P2 capture 0.133 [0.092, 0.178] | P3-P2e -0.024 [-0.047, -0.002] | P4-P2e 0.005 [0.000, 0.014]
+  paired: P3-P2 capture 0.109 [0.064, 0.160] | P4-P2 0.138 [0.097, 0.180] | P2-P1 0.308 [0.240, 0.375]
+  P2 chooses the same fix set as P4: 0.032 [0.009, 0.055] ; same first fix: 0.447 [0.384, 0.516] ; P2 captures >= 99% of oracle: 0.831
+
+-- primary configuration, evidence regime b (tau 0.5, L_auth 0.10, sigma 0.5, beta 0.5); instances with recoverable delay: 219 of 400
+  capture P1 frequency       0.470 [0.408, 0.530]   regret days 4.81 [3.78, 5.90]
+  capture P2 Shapley         0.600 [0.538, 0.662]   regret days 2.82 [2.12, 3.60]
+  capture P3 direct greedy   0.654 [0.596, 0.714]   regret days 2.69 [1.95, 3.42]
+  capture P4 exact (model)   0.659 [0.594, 0.720]   regret days 2.65 [1.99, 3.46]
+  capture P2b Shapley/cost         0.588 [0.525, 0.651]   regret days 2.95 [2.24, 3.74]   >=99% of oracle: 0.521
+  capture P2e epoch Shapley        0.657 [0.597, 0.715]   regret days 2.68 [2.00, 3.47]   >=99% of oracle: 0.598
+  capture P2eb epoch Shapley/cost  0.660 [0.599, 0.720]   regret days 2.65 [1.98, 3.43]   >=99% of oracle: 0.598
+  paired: P2e-P2 capture 0.057 [0.030, 0.089] | P3-P2e -0.003 [-0.015, 0.011] | P4-P2e 0.002 [-0.007, 0.014]
+  paired: P3-P2 capture 0.054 [0.023, 0.086] | P4-P2 0.059 [0.032, 0.093] | P2-P1 0.130 [0.079, 0.184]
+  P2 chooses the same fix set as P4: 0.046 [0.018, 0.073] ; same first fix: 0.411 [0.347, 0.475] ; P2 captures >= 99% of oracle: 0.548
+
+-- primary configuration, evidence regime c (tau 0.5, L_auth 0.10, sigma 0.5, beta 0.5); instances with recoverable delay: 219 of 400
+  capture P1 frequency       0.531 [0.471, 0.593]   regret days 4.58 [3.52, 5.79]
+  capture P2 Shapley         0.763 [0.708, 0.815]   regret days 1.13 [0.86, 1.44]
+  capture P3 direct greedy   0.818 [0.766, 0.865]   regret days 0.84 [0.58, 1.15]
+  capture P4 exact (model)   0.845 [0.801, 0.890]   regret days 0.74 [0.50, 1.01]
+  capture P2b Shapley/cost         0.800 [0.749, 0.846]   regret days 1.05 [0.75, 1.38]   >=99% of oracle: 0.740
+  capture P2e epoch Shapley        0.890 [0.848, 0.926]   regret days 0.63 [0.38, 0.90]   >=99% of oracle: 0.858
+  capture P2eb epoch Shapley/cost  0.901 [0.863, 0.937]   regret days 0.54 [0.32, 0.79]   >=99% of oracle: 0.872
+  paired: P2e-P2 capture 0.127 [0.084, 0.174] | P3-P2e -0.072 [-0.110, -0.037] | P4-P2e -0.045 [-0.076, -0.017]
+  paired: P3-P2 capture 0.055 [0.006, 0.107] | P4-P2 0.083 [0.029, 0.136] | P2-P1 0.232 [0.165, 0.297]
+  P2 chooses the same fix set as P4: 0.023 [0.005, 0.041] ; same first fix: 0.402 [0.333, 0.466] ; P2 captures >= 99% of oracle: 0.685
+
+-- primary configuration, evidence regime d (tau 0.5, L_auth 0.10, sigma 0.5, beta 0.5); instances with recoverable delay: 219 of 400
+  capture P1 frequency       0.366 [0.306, 0.427]   regret days 5.51 [4.52, 6.55]
+  capture P2 Shapley         0.464 [0.402, 0.523]   regret days 4.03 [3.29, 4.84]
+  capture P3 direct greedy   0.421 [0.361, 0.483]   regret days 4.21 [3.51, 5.03]
+  capture P4 exact (model)   0.421 [0.359, 0.485]   regret days 4.21 [3.45, 5.02]
+  capture P2b Shapley/cost         0.461 [0.400, 0.520]   regret days 4.07 [3.33, 4.90]   >=99% of oracle: 0.370
+  capture P2e epoch Shapley        0.468 [0.407, 0.528]   regret days 4.01 [3.25, 4.82]   >=99% of oracle: 0.388
+  capture P2eb epoch Shapley/cost  0.461 [0.399, 0.524]   regret days 4.04 [3.27, 4.88]   >=99% of oracle: 0.379
+  paired: P2e-P2 capture 0.004 [-0.021, 0.030] | P3-P2e -0.047 [-0.076, -0.020] | P4-P2e -0.047 [-0.075, -0.020]
+  paired: P3-P2 capture -0.043 [-0.077, -0.011] | P4-P2 -0.043 [-0.076, -0.013] | P2-P1 0.098 [0.058, 0.142]
+  P2 chooses the same fix set as P4: 0.032 [0.014, 0.055] ; same first fix: 0.301 [0.242, 0.365] ; P2 captures >= 99% of oracle: 0.370
+
+-- one-factor sensitivity (regime a, other factors at primary), capture of P2 Shapley / P3 greedy / P1 frequency and gap P4-P2
+  tau=0.25  n= 330  P1 0.542  P2 0.944  P3 0.956  P4 1.000  P2e 0.983  P2 same-set-as-P4 0.064
+  tau=0.5   n= 219  P1 0.554  P2 0.862  P3 0.972  P4 1.000  P2e 0.995  P2 same-set-as-P4 0.032
+  tau=0.75  n=  40  P1 0.575  P2 0.925  P3 1.000  P4 1.000  P2e 1.000  P2 same-set-as-P4 0.000
+  L_auth=0.0   n= 225  P1 0.528  P2 0.874  P3 0.969  P4 1.000  P2e 1.000  P2 same-set-as-P4 0.036
+  L_auth=0.1   n= 219  P1 0.554  P2 0.862  P3 0.972  P4 1.000  P2e 0.995  P2 same-set-as-P4 0.032
+  L_auth=0.25  n= 210  P1 0.576  P2 0.856  P3 0.970  P4 1.000  P2e 0.995  P2 same-set-as-P4 0.029
+  sigma=0.0   n= 226  P1 0.517  P2 0.815  P3 0.985  P4 1.000  P2e 0.981  P2 same-set-as-P4 0.035
+  sigma=0.5   n= 219  P1 0.554  P2 0.862  P3 0.972  P4 1.000  P2e 0.995  P2 same-set-as-P4 0.032
+  sigma=1.0   n= 210  P1 0.731  P2 0.891  P3 0.975  P4 1.000  P2e 1.000  P2 same-set-as-P4 0.010
+  beta=0.25  n= 176  P1 0.532  P2 0.783  P3 0.985  P4 1.000  P2e 0.985  P2 same-set-as-P4 0.028
+  beta=0.5   n= 219  P1 0.554  P2 0.862  P3 0.972  P4 1.000  P2e 0.995  P2 same-set-as-P4 0.032
+  beta=0.75  n= 231  P1 0.668  P2 0.940  P3 0.976  P4 1.000  P2e 1.000  P2 same-set-as-P4 0.009
+
+-- by instance characteristics (primary, regime a)
+  activities = 30              n=  60  P1 0.598  P2 0.862  P3 1.000  gap(P4-P2) 0.138  agree 0.000
+  activities = 60              n=  48  P1 0.511  P2 0.846  P3 0.898  gap(P4-P2) 0.154  agree 0.021
+  activities = 90              n=  48  P1 0.520  P2 0.872  P3 1.000  gap(P4-P2) 0.128  agree 0.062
+  activities = 120             n=  63  P1 0.571  P2 0.868  P3 0.979  gap(P4-P2) 0.132  agree 0.048
+  resource strength: low third n=  82  P1 0.638  P2 0.853  P3 0.986  gap(P4-P2) 0.147  agree 0.012
+  resource strength: middle third n=  70  P1 0.576  P2 0.870  P3 0.967  gap(P4-P2) 0.130  agree 0.043
+  resource strength: high third n=  67  P1 0.428  P2 0.866  P3 0.959  gap(P4-P2) 0.134  agree 0.045
+  no authority event           n= 113  P1 0.622  P2 0.870  P3 0.959  gap(P4-P2) 0.130  agree 0.009
+  authority share <= 25%       n=  36  P1 0.594  P2 0.841  P3 0.977  gap(P4-P2) 0.159  agree 0.056
+  authority share > 25%        n=  70  P1 0.424  P2 0.861  P3 0.990  gap(P4-P2) 0.139  agree 0.057
+  delay < 10% of baseline      n=  36  P1 0.696  P2 0.907  P3 0.926  gap(P4-P2) 0.093  agree 0.028
+  delay >= 10% of baseline     n= 183  P1 0.526  P2 0.853  P3 0.981  gap(P4-P2) 0.147  agree 0.033
+
+== Pre-specified hypothesis readings (dev) ==
+H1 CPM zero-share >= 0.30 pooled: 0.639 -> consistent with H1
+H2 leading party changes under regime d in >= 10% of instances: 0.403 -> consistent with H2
+H3 P2 picks the same set as P4 in a majority of instances (primary): 0.032 -> NOT supported (agreement is not a majority)
+H3b P2 reaches >= 99% of oracle recovery in a majority of instances with recoverable delay: 0.831 -> consistent with H3b
+H4 capture of P2 falls by >= 0.05 from L_auth 0 to 0.25: 0.874 -> 0.856 (drop 0.018) -> NOT supported

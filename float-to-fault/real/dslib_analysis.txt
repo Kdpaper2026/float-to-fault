@@ -1,0 +1,75 @@
+Replay fidelity: |replayed - file root| max over projects = 45.000 working days (consistency by construction; calendars/relations parsed)
+Baseline starts exactly at logic-ready time (median over projects): 0.88 ; negative-wait share: median 0.00 max 0.36
+Projects: replayed 78 of 163 construction; screened (<=5% activities starting before logic permits) 74
+Replayed real duration matches the file-reported real duration within 0.5 day: 70 of 78 (the other 8 overshoot by 9-45 days)
+Strict screen (logic-consistent baseline AND replay matches reported real duration): 67 projects
+
+== STRICT screen (primary): 67 projects replayed, 45 late (observed delay > 0)
+  total observed delay (late projects) 2044 working days; median project delay 19.0
+  CPM-with-actual-durations claim / observed delay               0.782 [0.475, 1.221]
+  Shapley share of delay in start waits (W)                      0.510 [0.181, 0.812]
+  Shapley share of delay in duration overruns (D)                0.490 [0.186, 0.823]
+  projects late by >=10 days: 37; per-project W-share median 0.28, share with W-share >= 0.30: 0.49; W-share <=0.05: 0.46
+
+== STRICT, tracking authenticity G: 62 projects replayed, 40 late (observed delay > 0)
+  total observed delay (late projects) 1838 working days; median project delay 18.0
+  CPM-with-actual-durations claim / observed delay               0.741 [0.406, 1.231]
+  Shapley share of delay in start waits (W)                      0.563 [0.215, 0.900]
+  Shapley share of delay in duration overruns (D)                0.437 [0.097, 0.799]
+  projects late by >=10 days: 33; per-project W-share median 0.35, share with W-share >= 0.30: 0.52; W-share <=0.05: 0.42
+
+== STRICT, tracking authenticity not G: 5 projects replayed, 5 late (observed delay > 0)
+  total observed delay (late projects) 206 working days; median project delay 20.0
+  CPM-with-actual-durations claim / observed delay               1.146 [0.623, 3.827]
+  Shapley share of delay in start waits (W)                      0.032 [-1.303, 0.380]
+  Shapley share of delay in duration overruns (D)                0.968 [0.627, 2.478]
+  projects late by >=10 days: 4; per-project W-share median -0.02, share with W-share >= 0.30: 0.25; W-share <=0.05: 0.75
+
+== STRICT, G, excluding near-duplicate 2016 series (C2016-16..26): 51 projects replayed, 40 late (observed delay > 0)
+  total observed delay (late projects) 1838 working days; median project delay 18.0
+  CPM-with-actual-durations claim / observed delay               0.741 [0.399, 1.207]
+  Shapley share of delay in start waits (W)                      0.563 [0.206, 0.893]
+  Shapley share of delay in duration overruns (D)                0.437 [0.113, 0.802]
+  projects late by >=10 days: 33; per-project W-share median 0.35, share with W-share >= 0.30: 0.52; W-share <=0.05: 0.42
+
+== STRICT, only projects whose DSLIB tracking has >=5 periods: 47 projects replayed, 36 late (observed delay > 0)
+  total observed delay (late projects) 1950 working days; median project delay 36.0
+  CPM-with-actual-durations claim / observed delay               0.773 [0.439, 1.228]
+  Shapley share of delay in start waits (W)                      0.532 [0.197, 0.847]
+  Shapley share of delay in duration overruns (D)                0.468 [0.143, 0.816]
+  projects late by >=10 days: 32; per-project W-share median 0.53, share with W-share >= 0.30: 0.56; W-share <=0.05: 0.41
+
+== all replayed: 78 projects replayed, 53 late (observed delay > 0)
+  total observed delay (late projects) 2543 working days; median project delay 19.0
+  CPM-with-actual-durations claim / observed delay               2.068 [0.588, 4.664]
+  Shapley share of delay in start waits (W)                      -0.226 [-1.632, 0.675]
+  Shapley share of delay in duration overruns (D)                1.226 [0.323, 2.632]
+  projects late by >=10 days: 44; per-project W-share median 0.42, share with W-share >= 0.30: 0.52; W-share <=0.05: 0.43
+
+== screened: 74 projects replayed, 49 late (observed delay > 0)
+  total observed delay (late projects) 2135 working days; median project delay 19.0
+  CPM-with-actual-durations claim / observed delay               0.753 [0.457, 1.155]
+  Shapley share of delay in start waits (W)                      0.537 [0.231, 0.832]
+  Shapley share of delay in duration overruns (D)                0.463 [0.176, 0.778]
+  projects late by >=10 days: 41; per-project W-share median 0.48, share with W-share >= 0.30: 0.54; W-share <=0.05: 0.41
+
+== screened, tracking authenticity G: 69 projects replayed, 44 late (observed delay > 0)
+  total observed delay (late projects) 1929 working days; median project delay 18.0
+  CPM-with-actual-durations claim / observed delay               0.710 [0.387, 1.151]
+  Shapley share of delay in start waits (W)                      0.591 [0.255, 0.921]
+  Shapley share of delay in duration overruns (D)                0.409 [0.087, 0.741]
+  projects late by >=10 days: 37; per-project W-share median 0.65, share with W-share >= 0.30: 0.57; W-share <=0.05: 0.38
+
+== screened, tracking authenticity not G: 5 projects replayed, 5 late (observed delay > 0)
+  total observed delay (late projects) 206 working days; median project delay 20.0
+  CPM-with-actual-durations claim / observed delay               1.146 [0.640, 3.783]
+  Shapley share of delay in start waits (W)                      0.032 [-1.478, 0.373]
+  Shapley share of delay in duration overruns (D)                0.968 [0.623, 2.478]
+  projects late by >=10 days: 4; per-project W-share median -0.02, share with W-share >= 0.30: 0.25; W-share <=0.05: 0.75
+
+== screened, G, excluding near-duplicate 2016 series (C2016-16..26): 58 projects replayed, 44 late (observed delay > 0)
+  total observed delay (late projects) 1929 working days; median project delay 18.0
+  CPM-with-actual-durations claim / observed delay               0.710 [0.376, 1.155]
+  Shapley share of delay in start waits (W)                      0.591 [0.239, 0.911]
+  Shapley share of delay in duration overruns (D)                0.409 [0.097, 0.739]
+  projects late by >=10 days: 37; per-project W-share median 0.65, share with W-share >= 0.30: 0.57; W-share <=0.05: 0.38
